@@ -105,4 +105,5 @@ INSERT INTO  database123.admissiontable (SerialNo, GRE_score, TOEFL_score, Unive
 INSERT INTO  database123.admissiontable (SerialNo, GRE_score, TOEFL_score, University_Rating, SOP, LOR, CGPA, Research, Chance_of_Admit) VALUES(100,323,113,3,4,4,8.88,1,0.79);
 
 SELECT MIN(GRE_score) FROM database123.admissiontable WHERE(University_Rating> 4 AND Research =0); 
-SELECT MIN(GRE_score),MIN(TOEFL_score) FROM database123.admissiontable WHERE CGPA = (SELECT MIN(CGPA) ) ;
+SELECT MIN(GRE_score),MIN(TOEFL_score) FROM databse123.admissiontable GROUP BY CGPA,Chance_of_Admit HAVING CGPA=MIN(CGPA) AND Chance_of_Admit=MAX(Chance_of_Admit);
+SELECT MIN(GRE_score),MIN(TOEFL_score) FROM database123.admissiontable WHERE  CGPA=(SELECT MIN(CGPA)) AND Chance_of_Admit=(SELECT MAX(Chance_of_Admit));
